@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UploadComponentComponent } from './upload-component/upload-component.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MessageModule } from 'primeng/message';
     BrowserAnimationsModule,
     HttpClientModule,
     FileUploadModule,
-    MessageModule
+    MessageModule,
+    ToastModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

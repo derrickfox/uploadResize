@@ -30,8 +30,8 @@ export class UploadComponentComponent {
     this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode' });
   }
 
-  // isNewsActive() {
-  //     return this.app.newsActive;
-  // }
+  isNewsActive() {
+      // return this.app.newsActive;
+  }
 
 }

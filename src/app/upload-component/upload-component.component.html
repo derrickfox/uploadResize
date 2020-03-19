@@ -1,15 +1,16 @@
 <div [ngClass]="{'news-active': isNewsActive(), 'content-section implementation': true}">
     <p-toast></p-toast>
-
-    <h3 class="first" style="border: 2px solid red;">Advanced</h3>
+    <h3 #content>Advanced</h3>
+    <h4>Test</h4>
     <p-fileUpload 
+        appUploadDrop
         name="demo[]" 
         url="./upload.php" 
         (onUpload)="onUpload($event)"
         multiple="multiple" 
         accept="image/*" 
         uploadLabel="Test Label"
-        [style]="{'border': '2px solid red'}"
+        [style]="{'border': '2px solid yellow'}"
         maxFileSize="1000000">
             <ng-template pTemplate="content">
                 <ul *ngIf="uploadedFiles.length">

@@ -9,11 +9,13 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { TabViewModule } from 'primeng/tabview';
+import { UploadDropDirective } from './directives/upload-drop.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadComponentComponent
+    UploadComponentComponent,
+    UploadDropDirective
   ],
   imports: [
     BrowserModule,

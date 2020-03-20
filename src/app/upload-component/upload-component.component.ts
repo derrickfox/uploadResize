@@ -18,7 +18,6 @@ export class UploadComponentComponent implements OnInit {
   uploadedFiles: any[] = [];
 
   constructor(private messageService: MessageService, private app: AppComponent, private element: ElementRef) {
-    console.log('this.content', this.content);
     // // Option 1
     // el.style.color = 'white';
     // el.style.background = 'red';
@@ -26,15 +25,13 @@ export class UploadComponentComponent implements OnInit {
     // el.style.cssText = 'color: white; background: red;'
     // Option 3
     // this.element.nativeElement.setAttribute('style', 'padding: 80px');
-    console.log('constructed!')
   }
 
   ngAfterViewInit() {
     if (this.content){
       this.content.nativeElement.addEventListener('dragover', this.onDragOver.bind(this));
     }
-    console.log('this.content', this.content);
-    this.content.nativeElement.setAttribute('style', 'border: 2px solid green');
+    // this.content.nativeElement.setAttribute('style', 'border: 2px solid green');
   }
 
   onDragOver(e) {

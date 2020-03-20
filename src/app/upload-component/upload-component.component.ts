@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { AppComponent } from './../app.component';
 import { DomHandler } from 'primeng/dom';
@@ -9,41 +9,29 @@ import { DomHandler } from 'primeng/dom';
   templateUrl: './upload-component.component.html',
   styleUrls: ['./upload-component.component.css']
 })
-export class UploadComponentComponent implements OnInit {
+export class UploadComponentComponent {
   @ViewChild('advancedfileinput', { static: false }) advancedFileInput: ElementRef;
   @ViewChild('content', { static: false }) content: ElementRef;
   @Input() disabled: boolean;
-  
+
   public dragHighlight: boolean;
   uploadedFiles: any[] = [];
 
-  constructor(private messageService: MessageService, private app: AppComponent, private element: ElementRef) {
-    // // Option 1
-    // el.style.color = 'white';
-    // el.style.background = 'red';
-    // // Option 2
-    // el.style.cssText = 'color: white; background: red;'
-    // Option 3
-    // this.element.nativeElement.setAttribute('style', 'padding: 80px');
-  }
+  constructor(private messageService: MessageService) { }
 
   ngAfterViewInit() {
-    if (this.content){
+    if (this.content) {
       this.content.nativeElement.addEventListener('dragover', this.onDragOver.bind(this));
     }
-    // this.content.nativeElement.setAttribute('style', 'border: 2px solid green');
   }
 
   onDragOver(e) {
     if (!this.disabled) {
-        DomHandler.addClass(this.content.nativeElement, 'ui-fileupload-highlight');
-        this.dragHighlight = true;
-        e.stopPropagation();
-        e.preventDefault();
+      DomHandler.addClass(this.content.nativeElement, 'ui-fileupload-highlight');
+      this.dragHighlight = true;
+      e.stopPropagation();
+      e.preventDefault();
     }
-}
-
-  ngOnInit() {
   }
 
   onUpload(event) {

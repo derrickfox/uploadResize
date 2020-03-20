@@ -1,13 +1,12 @@
-import { AfterViewInit, Directive, Host, Input, Renderer2, Self, ElementRef } from '@angular/core';
-import { FileUpload } from 'primeng/fileupload';
+import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[appUploadDrop]'
 })
-export class UploadDropDirective implements AfterViewInit{
+export class UploadDropDirective implements AfterViewInit {
   uploadedFiles: any[] = [];
 
-  constructor(private renderer: Renderer2, @Host() @Self() private fileUpload: FileUpload, private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) { }
 
   ngAfterViewInit(): void {
     this.increaseUploadDropArea();
@@ -15,7 +14,7 @@ export class UploadDropDirective implements AfterViewInit{
 
   private increaseUploadDropArea(): void {
     let uploadDropArea = this.elementRef.nativeElement.querySelector('.ui-fileupload-content');
-    uploadDropArea.setAttribute('style', 'padding-bottom: 100px')
+    uploadDropArea.setAttribute('style', 'height: 10em')
   }
 
 }

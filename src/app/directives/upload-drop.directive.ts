@@ -15,7 +15,7 @@ export class UploadDropDirective implements AfterViewInit{
 
   private increaseUploadDropArea(): void {
     let uploadDropArea = this.elementRef.nativeElement.querySelector('.ui-fileupload-content');
-    uploadDropArea.setAttribute('style', 'margin: 100px')
+    uploadDropArea.setAttribute('style', 'padding-bottom: 100px')
   }
 
 }

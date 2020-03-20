@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, Input } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { AppComponent } from './../app.component';
+import { DomHandler } from 'primeng/dom';
 
 @Component({
   selector: 'app-upload-component',
@@ -8,11 +9,42 @@ import { AppComponent } from './../app.component';
   templateUrl: './upload-component.component.html',
   styleUrls: ['./upload-component.component.css']
 })
-export class UploadComponentComponent {
-
+export class UploadComponentComponent implements OnInit {
+  @ViewChild('advancedfileinput', { static: false }) advancedFileInput: ElementRef;
+  @ViewChild('content', { static: false }) content: ElementRef;
+  @Input() disabled: boolean;
+  
+  public dragHighlight: boolean;
   uploadedFiles: any[] = [];
 
-  constructor(private messageService: MessageService, private app: AppComponent) { }
+  constructor(private messageService: MessageService, private app: AppComponent, private element: ElementRef) {
+    // // Option 1
+    // el.style.color = 'white';
+    // el.style.background = 'red';
+    // // Option 2
+    // el.style.cssText = 'color: white; background: red;'
+    // Option 3
+    // this.element.nativeElement.setAttribute('style', 'padding: 80px');
+  }
+
+  ngAfterViewInit() {
+    if (this.content){
+      this.content.nativeElement.addEventListener('dragover', this.onDragOver.bind(this));
+    }
+    // this.content.nativeElement.setAttribute('style', 'border: 2px solid green');
+  }
+
+  onDragOver(e) {
+    if (!this.disabled) {
+        DomHandler.addClass(this.content.nativeElement, 'ui-fileupload-highlight');
+        this.dragHighlight = true;
+        e.stopPropagation();
+        e.preventDefault();
+    }
+}
+
+  ngOnInit() {
+  }
 
   onUpload(event) {
     for (let file of event.files) {
@@ -31,7 +63,7 @@ export class UploadComponentComponent {
   }
 
   isNewsActive() {
-      // return this.app.newsActive;
+    // return this.app.newsActive;
   }
 
 }
